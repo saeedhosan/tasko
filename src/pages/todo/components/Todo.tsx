@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { SlClose } from "react-icons/sl";
 import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
 import { TodoType } from "../../../app/types";
 import { cn, timeago } from "../../../app/utiles";
 import ButtonCircleColor from "../../../components/ButtonCircleColor";
@@ -72,6 +73,29 @@ export default function Todo(todo: TodoType) {
 export function ColorButtonGroup({ todo_id, color }: { color: string; todo_id: number }) {
     const dispatch = useDispatch();
 
+    const onDelete = (taskId: number) => {
+        Swal.fire({
+            title: "Are you sure want to delete?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // User confirmed the action
+                dispatch(todoDelete(taskId));
+
+                // Swal.fire({
+                //     position: "top-end",
+                //     icon: "success",
+                //     title: "Thanks for accepting our terms.",
+                //     showConfirmButton: false,
+                //     timer: 1500,
+                // });
+            }
+        });
+    };
+
     return (
         <>
             <button
@@ -104,7 +128,7 @@ export function ColorButtonGroup({ todo_id, color }: { color: string; todo_id: n
 
             <SlClose
                 className="w-4 h-4 text-gray-800 cursor-pointer"
-                onClick={() => dispatch(todoDelete(todo_id))}
+                onClick={() => onDelete(todo_id)}
             />
         </>
     );
