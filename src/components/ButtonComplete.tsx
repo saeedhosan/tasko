@@ -4,7 +4,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     completed?: boolean;
 }
 
-export default function (props: Props) {
+export default function ButtonComplete(props: Props) {
     return (
         <button
             {...props}

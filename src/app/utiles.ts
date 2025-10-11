@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import clsx, { ClassValue } from "clsx";
 import { formatDistance } from "date-fns";
 import { twMerge } from "tailwind-merge";

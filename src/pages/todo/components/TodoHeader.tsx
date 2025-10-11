@@ -10,7 +10,6 @@ export default function TodoHeader() {
     const [title, setTitle] = useState("");
     const [datetime, setDatetime] = useState(""); // '2024-03-18T00:40'
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function formSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 

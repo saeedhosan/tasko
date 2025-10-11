@@ -14,7 +14,7 @@ export default function MainProvider({ children }: { children: ReactNode }) {
         pushSubscribe(worker_path)
             .then((token) => dispatch(notifyTokenUpdate(token)))
             .catch((err) => toast.error(errorToString(err)));
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if ("serviceWorker" in navigator) {

@@ -1,5 +1,5 @@
 import { getTheme, themeSchema, unSlash } from "utilies";
-import logo from "/logo.png";
+import logo from "/logo/logo.png";
 
 const basename = unSlash(import.meta.env.VITE_BASENAME || "");
 
