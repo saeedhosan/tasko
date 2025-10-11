@@ -13,6 +13,8 @@ dist-ssr
 *.local
 # .env
 public/fcm.js
+package-lock.json
+pnpm-lock.yaml
 
 # Editor directories and files
 .vscode/*

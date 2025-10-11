@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "appmon": "^1.0.28",
     "clsx": "^2.1.0",
     "date-fns": "^3.6.0",
     "firebase": "^10.8.1",
