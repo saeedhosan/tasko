@@ -1,5 +1,5 @@
-import { setThemeStore } from "appmon/storage";
 import { useEffect, useState } from "react";
+import { setTheme } from "utilies";
 import settings from "../app/settings";
 import { cn } from "../app/utiles";
 import Dropdown from "../components/Dropdown";
@@ -9,11 +9,9 @@ import Sun from "../components/Sun";
 import BrandLogo from "./BrandLogo";
 
 export default function Header() {
-
     const [fixed, setFixed] = useState(false);
 
     useEffect(() => {
-
         function scrollToFixed() {
             if (document.documentElement.scrollTop > 100) {
                 setFixed(true);
@@ -31,15 +29,20 @@ export default function Header() {
             //clear scoll event listener
             window.removeEventListener("scroll", scrollToFixed);
         };
-    }, [])
+    }, []);
 
     return (
-        <header id="header" className={cn(`transition-all z-[999] top-0 left-0 right-0 w-full bg-slate-200 dark:bg-slate-800 shadow-2xl  fixed py-4`, {
-            'py-2.5': fixed
-        })}>
-            <nav className={'w-full px-8'}>
+        <header
+            id="header"
+            className={cn(
+                `transition-all z-[999] top-0 left-0 right-0 w-full bg-slate-200 dark:bg-slate-800 shadow-2xl  fixed py-4`,
+                {
+                    "py-2.5": fixed,
+                }
+            )}
+        >
+            <nav className={"w-full px-8"}>
                 <div className="w-full flex flex-wrap items-center justify-between mx-auto">
-
                     <BrandLogo logo={settings.logo} href="/" />
 
                     <SwtichTheme />
@@ -62,25 +65,26 @@ export default function Header() {
     );
 }
 
-
 export function SwtichTheme() {
-
     const [dark, setDark] = useState(settings.theme === "dark");
 
     const handleTheme = () => {
         const theme = dark ? "light" : "dark";
         setDark(!dark);
-        setThemeStore(theme, settings.theme_key);
-        if (theme === 'dark') {
-            document.documentElement.classList.remove('light');
-            document.documentElement.classList.add('dark');
+        setTheme(theme, settings.theme_key);
+        if (theme === "dark") {
+            document.documentElement.classList.remove("light");
+            document.documentElement.classList.add("dark");
         } else {
-            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.remove("dark");
         }
     };
 
     return (
-        <div onClick={handleTheme} className={`p-2 text-gray-900  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent cursor-pointer text-2xl rounded-full`}>
+        <div
+            onClick={handleTheme}
+            className={`p-2 text-gray-900  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent cursor-pointer text-2xl rounded-full`}
+        >
             {dark ? <Moon /> : <Sun />}
         </div>
     );
