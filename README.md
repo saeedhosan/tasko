@@ -2,6 +2,8 @@
 
 Tasko is a lightweight, privacy-conscious task and todo manager built with React and TypeScript. It emphasizes fast task capture, offline-first reliability, and optional cloud sync to help individuals and small teams stay organized and productive.
 
+![](/example.png)
+
 ## Project Name
 
 - **Tasko — Smart Task Manager**
